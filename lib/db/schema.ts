@@ -46,3 +46,6 @@ export const filesRelations = relations(files, ({ one , many}) => ({
     //relation to child files , each folder can have many child files
     children: many(files),
 }));
+
+//type definition ==> var of all schema
+export const file = typeof files.$inferSelect;
