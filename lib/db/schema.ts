@@ -48,4 +48,6 @@ export const filesRelations = relations(files, ({ one , many}) => ({
 }));
 
 //type definition ==> var of all schema
-export const file = typeof files.$inferSelect;
+export const File = typeof files.$inferSelect;
+// regenerate types schema
+export const NewFile = typeof files.$inferInsert;
