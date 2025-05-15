@@ -1,7 +1,7 @@
 import { integer, pgTable, varchar , text , uuid , boolean, timestamp} from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
-import { use } from "react";
-import { time } from "console";
+
+
 
 //design your db schema here
 export const files = pgTable("files", {
@@ -34,3 +34,15 @@ export const files = pgTable("files", {
 
 
 });
+
+// relations
+export const filesRelations = relations(files, ({ one , many}) => ({
+// parent folder, each file can have one parent folder
+    parent: one(files, {
+        // foreignKey: files.parentId,
+        fields: [files.parentId],
+        references: [files.id],
+    }),
+    //relation to child files , each folder can have many child files
+    children: many(files),
+}));
